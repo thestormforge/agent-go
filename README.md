@@ -11,7 +11,7 @@ This module does not install the CRD `workloadoptimizers.optimize.stormforge.io`
 
 ### Using ApplyConfig Method (preferred)
 
-[Apply Config](./examples/apply-config/main.go)
+[Apply Config](./examples/apply-config/README.md)
 
 ### Using Controller Runtime Client
 

@@ -3,7 +3,7 @@ module github.com/thestormforge/agent-go/examples/apply-config
 go 1.24.1
 
 require (
-	github.com/thestormforge/agent-go v0.0.0-20250307192928-f7f3a5c84b50
+	github.com/thestormforge/agent-go v0.0.0-20250403145745-8090977df562
 	k8s.io/apimachinery v0.32.3
 	k8s.io/client-go v0.32.3
 )
@@ -50,5 +50,3 @@ require (
 	sigs.k8s.io/structured-merge-diff/v4 v4.4.2 // indirect
 	sigs.k8s.io/yaml v1.4.0 // indirect
 )
-
-replace github.com/thestormforge/agent-go => ../..
