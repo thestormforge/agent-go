@@ -38,7 +38,7 @@ func WorkloadOptimizer(name, namespace string) *WorkloadOptimizerApplyConfigurat
 	b.WithName(name)
 	b.WithNamespace(namespace)
 	b.WithKind("WorkloadOptimizer")
-	b.WithAPIVersion("optimize/v1")
+	b.WithAPIVersion("optimize.stormforge.io/v1")
 	return b
 }
 

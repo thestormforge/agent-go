@@ -29,7 +29,7 @@ type OptimizeV1Interface interface {
 	WorkloadOptimizersGetter
 }
 
-// OptimizeV1Client is used to interact with features provided by the optimize group.
+// OptimizeV1Client is used to interact with features provided by the optimize.stormforge.io group.
 type OptimizeV1Client struct {
 	restClient rest.Interface
 }

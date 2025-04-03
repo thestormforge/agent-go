@@ -29,7 +29,7 @@ import (
 // apply configuration type exists for the given GroupVersionKind.
 func ForKind(kind schema.GroupVersionKind) interface{} {
 	switch kind {
-	// Group=optimize, Version=v1
+	// Group=optimize.stormforge.io, Version=v1
 	case v1.SchemeGroupVersion.WithKind("Apply"):
 		return &optimizev1.ApplyApplyConfiguration{}
 	case v1.SchemeGroupVersion.WithKind("Autoscaler"):

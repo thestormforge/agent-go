@@ -12,6 +12,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+// Package v1 contains API Schema definitions for the optimize.stormforge.io v1 API group.
+// +groupName=optimize.stormforge.io
 package v1
 
 // +k8s:deepcopy-gen=package
