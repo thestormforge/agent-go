@@ -22,6 +22,8 @@ import (
 
 // WorkloadOptimizerStatusApplyConfiguration represents a declarative configuration of the WorkloadOptimizerStatus type for use
 // with apply.
+//
+// WorkloadOptimizerStatus defines the observed state of Optimizer.
 type WorkloadOptimizerStatusApplyConfiguration struct {
 	State *optimizev1.WorkloadOptimizerState `json:"state,omitempty"`
 }

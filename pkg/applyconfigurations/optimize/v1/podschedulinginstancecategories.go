@@ -18,6 +18,8 @@ package v1
 
 // PodSchedulingInstanceCategoriesApplyConfiguration represents a declarative configuration of the PodSchedulingInstanceCategories type for use
 // with apply.
+//
+// SchedulingInstanceCategories describes optimization for instance category affinities.
 type PodSchedulingInstanceCategoriesApplyConfiguration struct {
 	PatchPath    *string                                      `json:"patchPath,omitempty"`
 	PatchFormat  *string                                      `json:"patchFormat,omitempty"`

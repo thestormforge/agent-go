@@ -18,6 +18,8 @@ package v1
 
 // AutoscalerContainerResourceApplyConfiguration represents a declarative configuration of the AutoscalerContainerResource type for use
 // with apply.
+//
+// AutoscalerContainerResource contains the identifiers for ContainerResource HPA metrics.
 type AutoscalerContainerResourceApplyConfiguration struct {
 	Name      *string `json:"name,omitempty"`
 	Container *string `json:"container,omitempty"`

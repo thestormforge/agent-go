@@ -22,6 +22,8 @@ import (
 
 // LimitsSettingsApplyConfiguration represents a declarative configuration of the LimitsSettings type for use
 // with apply.
+//
+// LimitsSettings configures the container limits.
 type LimitsSettingsApplyConfiguration struct {
 	CommonResourceApplyConfiguration `json:",inline"`
 	LimitRequestRatio                *resource.Quantity `json:"limitRequestRatio,omitempty"`

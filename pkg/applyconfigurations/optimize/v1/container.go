@@ -18,6 +18,9 @@ package v1
 
 // ContainerApplyConfiguration represents a declarative configuration of the Container type for use
 // with apply.
+//
+// Container is used to configure the workload container settings.
+// This should allow for the ability to set container specific resource bounds.
 type ContainerApplyConfiguration struct {
 	Name   *string                             `json:"name,omitempty"`
 	CPU    *ResourceSettingsApplyConfiguration `json:"cpu,omitempty"`

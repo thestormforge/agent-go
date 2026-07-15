@@ -18,9 +18,15 @@ package v1
 
 // AutoscalerApplyConfiguration represents a declarative configuration of the Autoscaler type for use
 // with apply.
+//
+// Autoscaler handles the configuration for the HPA configured for the workload.
 type AutoscalerApplyConfiguration struct {
-	PatchTargetRef *PatchTargetRefApplyConfiguration     `json:"patchTargetRef,omitempty"`
-	Metrics        []AutoscalerMetricsApplyConfiguration `json:"metrics,omitempty"`
+	// PatchTargetRef allows specifiying the object that should be patched
+	// with HPA settings.
+	// This is most useful in situations where a CRD is used to configure a HPA.
+	PatchTargetRef *PatchTargetRefApplyConfiguration `json:"patchTargetRef,omitempty"`
+	// Metrics configures the HPA metrics the workload scales on.
+	Metrics []AutoscalerMetricsApplyConfiguration `json:"metrics,omitempty"`
 }
 
 // AutoscalerApplyConfiguration constructs a declarative configuration of the Autoscaler type for use with

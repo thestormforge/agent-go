@@ -22,8 +22,16 @@ import (
 
 // AutoscalerIdentifierApplyConfiguration represents a declarative configuration of the AutoscalerIdentifier type for use
 // with apply.
+//
+// Use new type here so we can disregard the methods associated with MetricIdentifier
+// // the hpav2.MetricIdentifier.String() was giving me grief
+// AutoscalerIdentifier contains the identifiers for metrics.
 type AutoscalerIdentifierApplyConfiguration struct {
-	Name     *string                                 `json:"name,omitempty"`
+	// name is the name of the given metric
+	Name *string `json:"name,omitempty"`
+	// selector is the string-encoded form of a standard kubernetes label selector for the given metric
+	// When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping.
+	// When unset, just the metricName will be used to gather metrics.
 	Selector *metav1.LabelSelectorApplyConfiguration `json:"selector,omitempty"`
 }
 

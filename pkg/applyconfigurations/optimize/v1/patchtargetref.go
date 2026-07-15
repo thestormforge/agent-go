@@ -18,8 +18,12 @@ package v1
 
 // PatchTargetRefApplyConfiguration represents a declarative configuration of the PatchTargetRef type for use
 // with apply.
+//
+// PatchTargetRef specifies the kind and name of the object that should be patched.
 type PatchTargetRefApplyConfiguration struct {
-	Kind       *string `json:"kind,omitempty"`
+	// Kind of the referent; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind *string `json:"kind,omitempty"`
+	// Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names
 	Name       *string `json:"name,omitempty"`
 	APIVersion *string `json:"apiVersion,omitempty"`
 }

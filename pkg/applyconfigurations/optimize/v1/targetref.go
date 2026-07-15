@@ -18,9 +18,16 @@ package v1
 
 // TargetRefApplyConfiguration represents a declarative configuration of the TargetRef type for use
 // with apply.
+//
+// TargetRef specifies the kind and name of the workload object.
 type TargetRefApplyConfiguration struct {
-	Kind       *string `json:"kind,omitempty"`
-	Name       *string `json:"name,omitempty"`
+	// Kind of the referent; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	// TODO lowercase names are painful; do we handle case changes in code?
+	// Restricted to [deployments|statefulsets|daemonsets|rollouts] for initial release
+	Kind *string `json:"kind,omitempty"`
+	// Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names
+	Name *string `json:"name,omitempty"`
+	// API version of the referent
 	APIVersion *string `json:"apiVersion,omitempty"`
 }
 
