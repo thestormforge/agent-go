@@ -26,15 +26,23 @@ type WorkloadOptimizerSpecApplyConfiguration struct {
 	TargetRef      *TargetRefApplyConfiguration      `json:"workloadTargetRef,omitempty"`
 	PatchTargetRef *PatchTargetRefApplyConfiguration `json:"patchTargetRef,omitempty"`
 	Workload       *optimizev1.Workload              `json:"workloadSettings,omitempty"`
-	Schedule       *string                           `json:"schedule,omitempty"`
-	LearningPeriod *string                           `json:"learningPeriod,omitempty"`
-	Apply          *ApplyApplyConfiguration          `json:"apply,omitempty"`
-	Reliability    *ReliabilityApplyConfiguration    `json:"reliability,omitempty"`
-	AutoDeploy     *bool                             `json:"autoDeploy,omitempty"`
-	Containers     []ContainerApplyConfiguration     `json:"containerSettings,omitempty"`
-	Autoscaler     *AutoscalerApplyConfiguration     `json:"hpaSettings,omitempty"`
-	PodScheduling  *PodSchedulingApplyConfiguration  `json:"podScheduling,omitempty"`
-	Thresholds     *optimizev1.Thresholds            `json:"thresholds,omitempty"`
+	// Schedule dictates the frequency of the recommendations.
+	// This can be done using one of the following syntaxes:
+	// - Cron; 10 min
+	// A schedule for every 10 minutes would look like: `schedule: */10 * * * *`.
+	// - ISO-8601 Duration ( https://en.wikipedia.org/wiki/ISO_8601#Durations )
+	// A schedule for every 1 hour would look like `schedule: PT1H`.\
+	// this overrides the schedule under Schedules.
+	// we will set this field as optional until we completely deprecate Schedules
+	Schedule       *string                          `json:"schedule,omitempty"`
+	LearningPeriod *string                          `json:"learningPeriod,omitempty"`
+	Apply          *ApplyApplyConfiguration         `json:"apply,omitempty"`
+	Reliability    *ReliabilityApplyConfiguration   `json:"reliability,omitempty"`
+	AutoDeploy     *bool                            `json:"autoDeploy,omitempty"`
+	Containers     []ContainerApplyConfiguration    `json:"containerSettings,omitempty"`
+	Autoscaler     *AutoscalerApplyConfiguration    `json:"hpaSettings,omitempty"`
+	PodScheduling  *PodSchedulingApplyConfiguration `json:"podScheduling,omitempty"`
+	Thresholds     *optimizev1.Thresholds           `json:"thresholds,omitempty"`
 }
 
 // WorkloadOptimizerSpecApplyConfiguration constructs a declarative configuration of the WorkloadOptimizerSpec type for use with

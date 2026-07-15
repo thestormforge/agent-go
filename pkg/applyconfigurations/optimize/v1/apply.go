@@ -18,6 +18,9 @@ package v1
 
 // ApplyApplyConfiguration represents a declarative configuration of the Apply type for use
 // with apply.
+//
+// Apply Method is used to configure how Optimize Live deploys the complete recommendations
+// that are generated when the workload’s learning period is over.
 type ApplyApplyConfiguration struct {
 	Method *string `json:"method,omitempty"`
 }

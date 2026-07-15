@@ -18,6 +18,8 @@ package v1
 
 // AutoscalerResourceApplyConfiguration represents a declarative configuration of the AutoscalerResource type for use
 // with apply.
+//
+// AutoscalerResource contains the identifiers for the Resource metric type.
 type AutoscalerResourceApplyConfiguration struct {
 	Name *string `json:"name,omitempty"`
 }

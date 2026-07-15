@@ -22,6 +22,8 @@ import (
 
 // AutoscalerPodsApplyConfiguration represents a declarative configuration of the AutoscalerPods type for use
 // with apply.
+//
+// AutoscalerPods contains the identifiers for the Pod metric type.
 type AutoscalerPodsApplyConfiguration struct {
 	AutoscalerIdentifierApplyConfiguration `json:",inline"`
 }

@@ -18,13 +18,21 @@ package v1
 
 // AutoscalerMetricsApplyConfiguration represents a declarative configuration of the AutoscalerMetrics type for use
 // with apply.
+//
+// AutoscalerMetrics holds the configuration for HPA metrics.
 type AutoscalerMetricsApplyConfiguration struct {
+	// Configuration for a Container metric based HPA metric type.
 	ContainerResource *AutoscalerContainerResourceApplyConfiguration `json:"containerResource,omitempty"`
-	External          *AutoscalerExternalApplyConfiguration          `json:"external,omitempty"`
-	Object            *AutoscalerObjectApplyConfiguration            `json:"object,omitempty"`
-	Pods              *AutoscalerPodsApplyConfiguration              `json:"pods,omitempty"`
-	Resource          *AutoscalerResourceApplyConfiguration          `json:"resource,omitempty"`
-	Target            *AutoscalerTargetApplyConfiguration            `json:"target,omitempty"`
+	// Configuration for an External metric based HPA metric type.
+	External *AutoscalerExternalApplyConfiguration `json:"external,omitempty"`
+	// Configuration for an Object metric based HPA metric type.
+	Object *AutoscalerObjectApplyConfiguration `json:"object,omitempty"`
+	// Configuration for a Pod metric based HPA metric type.
+	Pods *AutoscalerPodsApplyConfiguration `json:"pods,omitempty"`
+	// Configuration for a Resource metric based HPA metric type.
+	Resource *AutoscalerResourceApplyConfiguration `json:"resource,omitempty"`
+	// Target defines the bounds for the recommended value.
+	Target *AutoscalerTargetApplyConfiguration `json:"target,omitempty"`
 }
 
 // AutoscalerMetricsApplyConfiguration constructs a declarative configuration of the AutoscalerMetrics type for use with

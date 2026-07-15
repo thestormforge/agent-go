@@ -22,6 +22,8 @@ import (
 
 // AutoscalerTargetApplyConfiguration represents a declarative configuration of the AutoscalerTarget type for use
 // with apply.
+//
+// AutoscalerTarget contains the bounds and patch location for HPA recommendations.
 type AutoscalerTargetApplyConfiguration struct {
 	Type      *v2.MetricTargetType `json:"type,omitempty"`
 	Min       *int                 `json:"min,omitempty"`

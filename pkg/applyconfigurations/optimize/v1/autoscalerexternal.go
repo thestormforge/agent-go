@@ -22,6 +22,8 @@ import (
 
 // AutoscalerExternalApplyConfiguration represents a declarative configuration of the AutoscalerExternal type for use
 // with apply.
+//
+// AutoscalerContainerResource contains the identifiers for ContainerResource metric type.
 type AutoscalerExternalApplyConfiguration struct {
 	AutoscalerIdentifierApplyConfiguration `json:",inline"`
 }

@@ -22,6 +22,8 @@ import (
 
 // RequestsSettingsApplyConfiguration represents a declarative configuration of the RequestsSettings type for use
 // with apply.
+//
+// RequestsSettings configures the container requests.
 type RequestsSettingsApplyConfiguration struct {
 	CommonResourceApplyConfiguration `json:",inline"`
 }

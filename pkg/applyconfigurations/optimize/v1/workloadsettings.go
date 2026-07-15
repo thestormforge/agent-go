@@ -22,7 +22,10 @@ import (
 
 // WorkloadSettingsApplyConfiguration represents a declarative configuration of the WorkloadSettings type for use
 // with apply.
+//
+// WorkloadSettings provides a way to configure settings for the entire workload.
 type WorkloadSettingsApplyConfiguration struct {
+	// Goal is used to configure the aggressiveness of the recommendations.
 	Goal *optimizev1.Goal `json:"optimizationGoal,omitempty"`
 }
 

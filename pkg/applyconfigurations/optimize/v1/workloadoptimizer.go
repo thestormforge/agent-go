@@ -24,6 +24,8 @@ import (
 
 // WorkloadOptimizerApplyConfiguration represents a declarative configuration of the WorkloadOptimizer type for use
 // with apply.
+//
+// WorkloadOptimizer is the Schema for the WorkloadOptimizer API.
 type WorkloadOptimizerApplyConfiguration struct {
 	metav1.TypeMetaApplyConfiguration    `json:",inline"`
 	*metav1.ObjectMetaApplyConfiguration `json:"metadata,omitempty"`
@@ -41,6 +43,8 @@ func WorkloadOptimizer(name, namespace string) *WorkloadOptimizerApplyConfigurat
 	b.WithAPIVersion("optimize.stormforge.io/v1")
 	return b
 }
+
+func (b WorkloadOptimizerApplyConfiguration) IsApplyConfiguration() {}
 
 // WithKind sets the Kind field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
@@ -216,8 +220,24 @@ func (b *WorkloadOptimizerApplyConfiguration) WithStatus(value *WorkloadOptimize
 	return b
 }
 
+// GetKind retrieves the value of the Kind field in the declarative configuration.
+func (b *WorkloadOptimizerApplyConfiguration) GetKind() *string {
+	return b.TypeMetaApplyConfiguration.Kind
+}
+
+// GetAPIVersion retrieves the value of the APIVersion field in the declarative configuration.
+func (b *WorkloadOptimizerApplyConfiguration) GetAPIVersion() *string {
+	return b.TypeMetaApplyConfiguration.APIVersion
+}
+
 // GetName retrieves the value of the Name field in the declarative configuration.
 func (b *WorkloadOptimizerApplyConfiguration) GetName() *string {
 	b.ensureObjectMetaApplyConfigurationExists()
 	return b.ObjectMetaApplyConfiguration.Name
+}
+
+// GetNamespace retrieves the value of the Namespace field in the declarative configuration.
+func (b *WorkloadOptimizerApplyConfiguration) GetNamespace() *string {
+	b.ensureObjectMetaApplyConfigurationExists()
+	return b.ObjectMetaApplyConfiguration.Namespace
 }

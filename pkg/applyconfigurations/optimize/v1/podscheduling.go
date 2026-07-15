@@ -22,6 +22,8 @@ import (
 
 // PodSchedulingApplyConfiguration represents a declarative configuration of the PodScheduling type for use
 // with apply.
+//
+// PodScheduling handles the configuration for the behavior of optimizing pod scheduling.
 type PodSchedulingApplyConfiguration struct {
 	SchedulingOptimizationPolicy *optimizev1.PodSchedulingOptimizationPolicy        `json:"schedulingOptimizationPolicy,omitempty"`
 	InstanceCategories           *PodSchedulingInstanceCategoriesApplyConfiguration `json:"instanceCategories,omitempty"`

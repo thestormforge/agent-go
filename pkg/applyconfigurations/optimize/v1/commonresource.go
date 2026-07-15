@@ -22,11 +22,20 @@ import (
 
 // CommonResourceApplyConfiguration represents a declarative configuration of the CommonResource type for use
 // with apply.
+//
+// CommonResource handles the bounds and patch path settings for limits and requests.
 type CommonResourceApplyConfiguration struct {
-	Min         *resource.Quantity `json:"min,omitempty"`
-	Max         *resource.Quantity `json:"max,omitempty"`
-	PatchPath   *string            `json:"patchPath,omitempty"`
-	PatchFormat *string            `json:"patchFormat,omitempty"`
+	// Min specifies the lower bound of the recommendation.
+	// If a recommendation is produced outside of the defined bound it will be clipped.
+	Min *resource.Quantity `json:"min,omitempty"`
+	// Max specifies the upper bound of the recommendation.
+	// If a recommendation is produced outside of the defined bound it will be clipped.
+	Max *resource.Quantity `json:"max,omitempty"`
+	// PatchPath controls where the recommendation should be applied/patched.
+	// The format for patchPath is yamlPath format.
+	PatchPath *string `json:"patchPath,omitempty"`
+	// PatchFormat specifies a Go template used to format the value for the patched resource.
+	PatchFormat *string `json:"patchFormat,omitempty"`
 }
 
 // CommonResourceApplyConfiguration constructs a declarative configuration of the CommonResource type for use with

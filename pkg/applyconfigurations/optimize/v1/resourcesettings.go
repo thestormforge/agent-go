@@ -22,7 +22,10 @@ import (
 
 // ResourceSettingsApplyConfiguration represents a declarative configuration of the ResourceSettings type for use
 // with apply.
+//
+// ResourceSettings configures the specific requests and limits for the container.
 type ResourceSettingsApplyConfiguration struct {
+	// Policy dictates the OptimizationPolicy that should be used.
 	Policy   *optimizev1.Policy                  `json:"optimizationPolicy,omitempty"`
 	Requests *RequestsSettingsApplyConfiguration `json:"requests,omitempty"`
 	Limits   *LimitsSettingsApplyConfiguration   `json:"limits,omitempty"`

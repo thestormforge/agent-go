@@ -22,6 +22,8 @@ import (
 
 // AutoscalerObjectApplyConfiguration represents a declarative configuration of the AutoscalerObject type for use
 // with apply.
+//
+// AutoscalerObject contains the identifiers for Object metric type.
 type AutoscalerObjectApplyConfiguration struct {
 	AutoscalerIdentifierApplyConfiguration `json:",inline"`
 	DescribedObject                        *TargetRefApplyConfiguration `json:"describedObject,omitempty"`
