@@ -25,6 +25,10 @@ type WorkloadOptimizerSpec struct {
 	TargetRef      *TargetRef      `json:"workloadTargetRef,omitempty"`
 	PatchTargetRef *PatchTargetRef `json:"patchTargetRef,omitempty"`
 	Workload       Workload        `json:"workloadSettings,omitempty"`
+	// WorkloadGroup aggregates usage metrics from related workloads so this
+	// workload's recommendation reflects the group's combined resource usage.
+	// +optional
+	WorkloadGroup *WorkloadGroup `json:"workloadGroup,omitempty"`
 	// Schedule dictates the frequency of the recommendations.
 	// This can be done using one of the following syntaxes:
 	// - Cron; 10 min
@@ -85,11 +89,44 @@ type WorkloadSettings struct {
 	Goal Goal `json:"optimizationGoal,omitempty"`
 }
 
+// WorkloadGroup configures which workloads are aggregated together when computing
+// this workload's recommendation. Identity fields default to this workload's own
+// values; all fields combine to narrow the set of matches.
+type WorkloadGroup struct {
+	// Selector is a Kubernetes label selector matching workloads to include (e.g. "app=nginx").
+	// +optional
+	Selector string `json:"selector,omitempty"`
+	// Expression is a CEL expression matching workloads to include. The `target`
+	// variable refers to this workload and `candidate` to the workload being matched.
+	// +optional
+	Expression string `json:"expression,omitempty"`
+	// Name overrides the workload name to include. Defaults to this workload's name.
+	// +optional
+	Name string `json:"name,omitempty"`
+	// Cluster overrides the cluster to include. Defaults to this workload's cluster.
+	// +optional
+	Cluster string `json:"cluster,omitempty"`
+	// Namespace overrides the namespace to include. Defaults to this workload's namespace.
+	// +optional
+	Namespace string `json:"namespace,omitempty"`
+	// Resource overrides the resource type to include. Defaults to this workload's resource type.
+	// +optional
+	Resource string `json:"resource,omitempty"`
+	// ExcludeTarget removes this workload from its own group (mirror mode), so only
+	// the matched workloads' metrics drive recommendations. Defaults to false.
+	// +optional
+	ExcludeTarget bool `json:"excludeTarget,omitempty"`
+}
+
 // Apply Method is used to configure how Optimize Live deploys the complete recommendations
 // that are generated when the workload’s learning period is over.
 type Apply struct {
-	// +kubebuilder:validation:Enum=patchworkloadresources;PatchWorkloadResources;dynamicadmissionwebhook;DynamicAdmissionWebhook;
+	// +kubebuilder:validation:Enum=patchworkloadresources;PatchWorkloadResources;dynamicadmissionwebhook;DynamicAdmissionWebhook;inplacepodresizing;InPlacePodResizing
 	Method string `json:"method,omitempty"`
+	// MaxPercentDecrease limits the maximum percent decrease applied per deploy.
+	MaxPercentDecrease string `json:"maxPercentDecrease,omitempty"`
+	// MaxPercentIncrease limits the maximum percent increase applied per deploy.
+	MaxPercentIncrease string `json:"maxPercentIncrease,omitempty"`
 }
 
 type Reliability struct {
@@ -114,6 +151,9 @@ type Thresholds map[corev1.ResourceName]Threshold
 
 type Threshold struct {
 	// +optional
+	// +kubebuilder:validation:Minimum=0
+	// +kubebuilder:validation:Type=integer
+	// +kubebuilder:validation:Format=""
 	MinPercentChange *int32 `json:"minPercentChange,omitempty"`
 	// +optional
 	MinUnitChange resource.Quantity `json:"minUnitChange,omitempty"`
@@ -274,6 +314,8 @@ const PodSchedulingNodeAffinityDefaultWeight int32 = 70
 type PodSchedulingNodeAffinity struct {
 	Type PodSchedulingNodeAffinityType `json:"type,omitempty"`
 	// +optional
+	// +kubebuilder:validation:Type=integer
+	// +kubebuilder:validation:Format=""
 	Weight int32 `json:"weight,omitempty" jsonschema:"minimum=1,maximum=100,default=70"`
 }
 

@@ -78,6 +78,8 @@ func ForKind(kind schema.GroupVersionKind) interface{} {
 		return &optimizev1.TargetRefApplyConfiguration{}
 	case v1.SchemeGroupVersion.WithKind("Threshold"):
 		return &optimizev1.ThresholdApplyConfiguration{}
+	case v1.SchemeGroupVersion.WithKind("WorkloadGroup"):
+		return &optimizev1.WorkloadGroupApplyConfiguration{}
 	case v1.SchemeGroupVersion.WithKind("WorkloadOptimizer"):
 		return &optimizev1.WorkloadOptimizerApplyConfiguration{}
 	case v1.SchemeGroupVersion.WithKind("WorkloadOptimizerSpec"):
