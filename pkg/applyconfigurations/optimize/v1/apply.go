@@ -23,6 +23,10 @@ package v1
 // that are generated when the workload’s learning period is over.
 type ApplyApplyConfiguration struct {
 	Method *string `json:"method,omitempty"`
+	// MaxPercentDecrease limits the maximum percent decrease applied per deploy.
+	MaxPercentDecrease *string `json:"maxPercentDecrease,omitempty"`
+	// MaxPercentIncrease limits the maximum percent increase applied per deploy.
+	MaxPercentIncrease *string `json:"maxPercentIncrease,omitempty"`
 }
 
 // ApplyApplyConfiguration constructs a declarative configuration of the Apply type for use with
@@ -36,5 +40,21 @@ func Apply() *ApplyApplyConfiguration {
 // If called multiple times, the Method field is set to the value of the last call.
 func (b *ApplyApplyConfiguration) WithMethod(value string) *ApplyApplyConfiguration {
 	b.Method = &value
+	return b
+}
+
+// WithMaxPercentDecrease sets the MaxPercentDecrease field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the MaxPercentDecrease field is set to the value of the last call.
+func (b *ApplyApplyConfiguration) WithMaxPercentDecrease(value string) *ApplyApplyConfiguration {
+	b.MaxPercentDecrease = &value
+	return b
+}
+
+// WithMaxPercentIncrease sets the MaxPercentIncrease field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the MaxPercentIncrease field is set to the value of the last call.
+func (b *ApplyApplyConfiguration) WithMaxPercentIncrease(value string) *ApplyApplyConfiguration {
+	b.MaxPercentIncrease = &value
 	return b
 }

@@ -26,6 +26,9 @@ type WorkloadOptimizerSpecApplyConfiguration struct {
 	TargetRef      *TargetRefApplyConfiguration      `json:"workloadTargetRef,omitempty"`
 	PatchTargetRef *PatchTargetRefApplyConfiguration `json:"patchTargetRef,omitempty"`
 	Workload       *optimizev1.Workload              `json:"workloadSettings,omitempty"`
+	// WorkloadGroup aggregates usage metrics from related workloads so this
+	// workload's recommendation reflects the group's combined resource usage.
+	WorkloadGroup *WorkloadGroupApplyConfiguration `json:"workloadGroup,omitempty"`
 	// Schedule dictates the frequency of the recommendations.
 	// This can be done using one of the following syntaxes:
 	// - Cron; 10 min
@@ -72,6 +75,14 @@ func (b *WorkloadOptimizerSpecApplyConfiguration) WithPatchTargetRef(value *Patc
 // If called multiple times, the Workload field is set to the value of the last call.
 func (b *WorkloadOptimizerSpecApplyConfiguration) WithWorkload(value optimizev1.Workload) *WorkloadOptimizerSpecApplyConfiguration {
 	b.Workload = &value
+	return b
+}
+
+// WithWorkloadGroup sets the WorkloadGroup field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the WorkloadGroup field is set to the value of the last call.
+func (b *WorkloadOptimizerSpecApplyConfiguration) WithWorkloadGroup(value *WorkloadGroupApplyConfiguration) *WorkloadOptimizerSpecApplyConfiguration {
+	b.WorkloadGroup = value
 	return b
 }
 
