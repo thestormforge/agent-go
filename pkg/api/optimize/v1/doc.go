@@ -18,6 +18,6 @@ package v1
 
 // +k8s:deepcopy-gen=package
 
-//go:generate go run k8s.io/code-generator/cmd/deepcopy-gen@v0.36.1 --go-header-file ../../../../hack/boilerplate.go.txt --output-file zz_generated.deepcopy.go .
-//go:generate go run k8s.io/code-generator/cmd/applyconfiguration-gen@v0.36.1 --go-header-file ../../../../hack/boilerplate.go.txt --output-dir=../../../applyconfigurations --output-pkg=github.com/thestormforge/agent-go/pkg/applyconfigurations .
-//go:generate go run k8s.io/code-generator/cmd/client-gen@v0.36.1 --go-header-file ../../../../hack/boilerplate.go.txt --output-dir=../../.. --clientset-name stormforge --output-pkg=github.com/thestormforge/agent-go/pkg --input-base=github.com/thestormforge/agent-go/pkg/api --input optimize/v1 --apply-configuration-package=github.com/thestormforge/agent-go/pkg/applyconfigurations .
+//go:generate go run k8s.io/code-generator/cmd/deepcopy-gen@v0.36.2 --go-header-file ../../../../hack/boilerplate.go.txt --output-file zz_generated.deepcopy.go .
+//go:generate go run k8s.io/code-generator/cmd/applyconfiguration-gen@v0.36.2 --go-header-file ../../../../hack/boilerplate.go.txt --output-dir=../../../applyconfigurations --output-pkg=github.com/thestormforge/agent-go/pkg/applyconfigurations .
+//go:generate go run k8s.io/code-generator/cmd/client-gen@v0.36.2 --go-header-file ../../../../hack/boilerplate.go.txt --output-dir=../../.. --clientset-name stormforge --output-pkg=github.com/thestormforge/agent-go/pkg --input-base=github.com/thestormforge/agent-go/pkg/api --input optimize/v1 --apply-configuration-package=github.com/thestormforge/agent-go/pkg/applyconfigurations .
