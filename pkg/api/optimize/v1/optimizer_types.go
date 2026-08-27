@@ -353,6 +353,11 @@ const (
 // WorkloadOptimizerStatus defines the observed state of Optimizer.
 type WorkloadOptimizerStatus struct {
 	State WorkloadOptimizerState `json:"state,omitempty"`
+	// ObservedGeneration is the metadata.generation that State describes. The workload
+	// reconciler writes both together, so State means "this generation reached StormForge"
+	// rather than "something reached StormForge at some time".
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
 }
 
 //+kubebuilder:object:root=true
