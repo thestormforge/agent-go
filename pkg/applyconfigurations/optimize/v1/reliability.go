@@ -19,7 +19,8 @@ package v1
 // ReliabilityApplyConfiguration represents a declarative configuration of the Reliability type for use
 // with apply.
 type ReliabilityApplyConfiguration struct {
-	Oom *OomApplyConfiguration `json:"oom,omitempty"`
+	Oom         *OomApplyConfiguration         `json:"oom,omitempty"`
+	CPUPressure *CPUPressureApplyConfiguration `json:"cpuPressure,omitempty"`
 }
 
 // ReliabilityApplyConfiguration constructs a declarative configuration of the Reliability type for use with
@@ -33,5 +34,13 @@ func Reliability() *ReliabilityApplyConfiguration {
 // If called multiple times, the Oom field is set to the value of the last call.
 func (b *ReliabilityApplyConfiguration) WithOom(value *OomApplyConfiguration) *ReliabilityApplyConfiguration {
 	b.Oom = value
+	return b
+}
+
+// WithCPUPressure sets the CPUPressure field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the CPUPressure field is set to the value of the last call.
+func (b *ReliabilityApplyConfiguration) WithCPUPressure(value *CPUPressureApplyConfiguration) *ReliabilityApplyConfiguration {
+	b.CPUPressure = value
 	return b
 }

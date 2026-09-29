@@ -130,7 +130,24 @@ type Apply struct {
 }
 
 type Reliability struct {
-	Oom *Oom `json:"oom,omitempty"`
+	Oom         *Oom         `json:"oom,omitempty"`
+	CPUPressure *CPUPressure `json:"cpuPressure,omitempty"`
+}
+
+type CPUPressure struct {
+	CPUBumpUp *CPUBumpUp `json:"cpuBumpUp,omitempty"`
+}
+
+type CPUBumpUp struct {
+	// +optional
+	Enabled *bool `json:"enabled,omitempty"`
+	// +optional
+	// +kubebuilder:validation:Enum=IfAutoDeployEnabled;ifautodeployenabled;Always;always;Never;never
+	ApplyImmediately string `json:"applyImmediately,omitempty"`
+	Period           string `json:"period,omitempty"`
+	Percent          string `json:"percent,omitempty"`
+	Min              string `json:"min,omitempty"`
+	Max              string `json:"max,omitempty"`
 }
 
 type Oom struct {
@@ -138,6 +155,8 @@ type Oom struct {
 }
 
 type MemoryBumpUp struct {
+	// +optional
+	Enabled *bool `json:"enabled,omitempty"`
 	// +optional
 	// +kubebuilder:validation:Enum=IfAutoDeployEnabled;ifautodeployenabled;Always;always;Never;never
 	ApplyImmediately string `json:"applyImmediately,omitempty"`
