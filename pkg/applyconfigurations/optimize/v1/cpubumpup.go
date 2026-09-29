@@ -16,9 +16,9 @@ limitations under the License.
 
 package v1
 
-// MemoryBumpUpApplyConfiguration represents a declarative configuration of the MemoryBumpUp type for use
+// CPUBumpUpApplyConfiguration represents a declarative configuration of the CPUBumpUp type for use
 // with apply.
-type MemoryBumpUpApplyConfiguration struct {
+type CPUBumpUpApplyConfiguration struct {
 	Enabled          *bool   `json:"enabled,omitempty"`
 	ApplyImmediately *string `json:"applyImmediately,omitempty"`
 	Period           *string `json:"period,omitempty"`
@@ -27,16 +27,16 @@ type MemoryBumpUpApplyConfiguration struct {
 	Max              *string `json:"max,omitempty"`
 }
 
-// MemoryBumpUpApplyConfiguration constructs a declarative configuration of the MemoryBumpUp type for use with
+// CPUBumpUpApplyConfiguration constructs a declarative configuration of the CPUBumpUp type for use with
 // apply.
-func MemoryBumpUp() *MemoryBumpUpApplyConfiguration {
-	return &MemoryBumpUpApplyConfiguration{}
+func CPUBumpUp() *CPUBumpUpApplyConfiguration {
+	return &CPUBumpUpApplyConfiguration{}
 }
 
 // WithEnabled sets the Enabled field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Enabled field is set to the value of the last call.
-func (b *MemoryBumpUpApplyConfiguration) WithEnabled(value bool) *MemoryBumpUpApplyConfiguration {
+func (b *CPUBumpUpApplyConfiguration) WithEnabled(value bool) *CPUBumpUpApplyConfiguration {
 	b.Enabled = &value
 	return b
 }
@@ -44,7 +44,7 @@ func (b *MemoryBumpUpApplyConfiguration) WithEnabled(value bool) *MemoryBumpUpAp
 // WithApplyImmediately sets the ApplyImmediately field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the ApplyImmediately field is set to the value of the last call.
-func (b *MemoryBumpUpApplyConfiguration) WithApplyImmediately(value string) *MemoryBumpUpApplyConfiguration {
+func (b *CPUBumpUpApplyConfiguration) WithApplyImmediately(value string) *CPUBumpUpApplyConfiguration {
 	b.ApplyImmediately = &value
 	return b
 }
@@ -52,7 +52,7 @@ func (b *MemoryBumpUpApplyConfiguration) WithApplyImmediately(value string) *Mem
 // WithPeriod sets the Period field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Period field is set to the value of the last call.
-func (b *MemoryBumpUpApplyConfiguration) WithPeriod(value string) *MemoryBumpUpApplyConfiguration {
+func (b *CPUBumpUpApplyConfiguration) WithPeriod(value string) *CPUBumpUpApplyConfiguration {
 	b.Period = &value
 	return b
 }
@@ -60,7 +60,7 @@ func (b *MemoryBumpUpApplyConfiguration) WithPeriod(value string) *MemoryBumpUpA
 // WithPercent sets the Percent field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Percent field is set to the value of the last call.
-func (b *MemoryBumpUpApplyConfiguration) WithPercent(value string) *MemoryBumpUpApplyConfiguration {
+func (b *CPUBumpUpApplyConfiguration) WithPercent(value string) *CPUBumpUpApplyConfiguration {
 	b.Percent = &value
 	return b
 }
@@ -68,7 +68,7 @@ func (b *MemoryBumpUpApplyConfiguration) WithPercent(value string) *MemoryBumpUp
 // WithMin sets the Min field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Min field is set to the value of the last call.
-func (b *MemoryBumpUpApplyConfiguration) WithMin(value string) *MemoryBumpUpApplyConfiguration {
+func (b *CPUBumpUpApplyConfiguration) WithMin(value string) *CPUBumpUpApplyConfiguration {
 	b.Min = &value
 	return b
 }
@@ -76,7 +76,7 @@ func (b *MemoryBumpUpApplyConfiguration) WithMin(value string) *MemoryBumpUpAppl
 // WithMax sets the Max field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Max field is set to the value of the last call.
-func (b *MemoryBumpUpApplyConfiguration) WithMax(value string) *MemoryBumpUpApplyConfiguration {
+func (b *CPUBumpUpApplyConfiguration) WithMax(value string) *CPUBumpUpApplyConfiguration {
 	b.Max = &value
 	return b
 }

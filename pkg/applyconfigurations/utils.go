@@ -54,6 +54,10 @@ func ForKind(kind schema.GroupVersionKind) interface{} {
 		return &optimizev1.CommonResourceApplyConfiguration{}
 	case v1.SchemeGroupVersion.WithKind("Container"):
 		return &optimizev1.ContainerApplyConfiguration{}
+	case v1.SchemeGroupVersion.WithKind("CPUBumpUp"):
+		return &optimizev1.CPUBumpUpApplyConfiguration{}
+	case v1.SchemeGroupVersion.WithKind("CPUPressure"):
+		return &optimizev1.CPUPressureApplyConfiguration{}
 	case v1.SchemeGroupVersion.WithKind("LimitsSettings"):
 		return &optimizev1.LimitsSettingsApplyConfiguration{}
 	case v1.SchemeGroupVersion.WithKind("MemoryBumpUp"):
