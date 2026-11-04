@@ -112,8 +112,12 @@ type WorkloadGroup struct {
 	// Resource overrides the resource type to include. Defaults to this workload's resource type.
 	// +optional
 	Resource string `json:"resource,omitempty"`
-	// ExcludeTarget removes this workload from its own group (mirror mode), so only
-	// the matched workloads' metrics drive recommendations. Defaults to false.
+	// Mirror sizes this workload like its group: its own metrics are excluded and the
+	// group's scaling point (e.g. HPA target utilization) is matched. Defaults to false.
+	// +optional
+	Mirror *bool `json:"mirror,omitempty"`
+	// Deprecated: use Mirror. The API replaced excludeTarget with mirror, so this is
+	// treated as Mirror when Mirror is unset.
 	// +optional
 	ExcludeTarget bool `json:"excludeTarget,omitempty"`
 }

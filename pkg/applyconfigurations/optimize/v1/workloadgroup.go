@@ -36,8 +36,11 @@ type WorkloadGroupApplyConfiguration struct {
 	Namespace *string `json:"namespace,omitempty"`
 	// Resource overrides the resource type to include. Defaults to this workload's resource type.
 	Resource *string `json:"resource,omitempty"`
-	// ExcludeTarget removes this workload from its own group (mirror mode), so only
-	// the matched workloads' metrics drive recommendations. Defaults to false.
+	// Mirror sizes this workload like its group: its own metrics are excluded and the
+	// group's scaling point (e.g. HPA target utilization) is matched. Defaults to false.
+	Mirror *bool `json:"mirror,omitempty"`
+	// Deprecated: use Mirror. The API replaced excludeTarget with mirror, so this is
+	// treated as Mirror when Mirror is unset.
 	ExcludeTarget *bool `json:"excludeTarget,omitempty"`
 }
 
@@ -92,6 +95,14 @@ func (b *WorkloadGroupApplyConfiguration) WithNamespace(value string) *WorkloadG
 // If called multiple times, the Resource field is set to the value of the last call.
 func (b *WorkloadGroupApplyConfiguration) WithResource(value string) *WorkloadGroupApplyConfiguration {
 	b.Resource = &value
+	return b
+}
+
+// WithMirror sets the Mirror field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the Mirror field is set to the value of the last call.
+func (b *WorkloadGroupApplyConfiguration) WithMirror(value bool) *WorkloadGroupApplyConfiguration {
+	b.Mirror = &value
 	return b
 }
 
